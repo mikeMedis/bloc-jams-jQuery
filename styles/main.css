@@ -13,7 +13,7 @@ body.landing {
     background-color: rgb(58,23,63);
 }
 
-.navbar { 
+.navbar {
     padding: 0.5rem
 }
 
@@ -34,7 +34,7 @@ body.landing {
 
 .hero-content .hero-title {
     position: absolute;
-    top: 40%; 
+    top: 40%;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -48,13 +48,13 @@ body.landing {
     text-shadow: 1px 1px 0px rbg(58,23,63);
 }
 
-.selling-points { 
+.selling-points {
     position: relative;
     display: table;
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .point {
@@ -75,8 +75,12 @@ body.landing {
     color: rbg(233,50,117);
     font-size: 5rem;
 }
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
 
-
-
-
-
+.clearfix::after {
+  clear: both;
+}
