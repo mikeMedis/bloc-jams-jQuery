@@ -10,13 +10,13 @@ body {
 }
 
 body.landing {
-  background-color: rgb(58,23,63);
+  background-color: rgb(58, 23, 63);
 }
 
 .navbar {
   position: relative;
-  padding: 0.5rem
-  background-color: rbga(101,18,95,0.5);
+  padding: 0.5rem;
+  background-color: rgba(101, 18, 95, 0.5);
   z-index: 1;
 }
 
@@ -54,7 +54,7 @@ body.landing {
 }
 
 .links-container .navbar-link:hover {
-  color: rbg(233,50,117);
+  color: rgb(233, 50, 117);
 }
 
 .hero-content {
@@ -79,7 +79,7 @@ body.landing {
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
-    text-shadow: 1px 1px 0px rbg(58,23,63);
+    text-shadow: 1px 1px 0px rgb(58, 23, 63);
 }
 
 .selling-points {
@@ -106,7 +106,7 @@ body.landing {
 .ion-music-note,
 .ion-radio-waves,
 .ion-iphone {
-    color: rbg(233,50,117);
+    color: rgb(233, 50, 117);
     font-size: 5rem;
 }
 .clearfix::before,
