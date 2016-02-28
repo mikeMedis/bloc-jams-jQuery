@@ -1,3 +1,5 @@
+"use strict";
+
 var pointsArray = document.getElementsByClassName('point');
 
 var revealPoint = function(point) {
