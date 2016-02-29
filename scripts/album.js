@@ -1,3 +1,4 @@
+
 var albumPicasso = {
     name: 'The Colors',
     artist: 'Pablo Picasso',
@@ -28,25 +29,10 @@ var albumMarconi = {
     ]
 };
 
-var albumJohn = {
-    name: 'Born and Raised',
-    artist: 'John Mayer',
-    label: 'Columbia',
-    year: '2012',
-    albumArtUrl: 'assets/images/album_covers/16.png',
-    songs: [
-        { name: 'Queen of Califorina', length: '4:08' },
-        { name: 'The Age of Worry', length: '2:39' },
-        { name: 'Shadow Days', length: '3:50' },
-        { name: 'Speak For Me', length: '3:45' },
-        { name: 'Something Like Oliva', length: '3:01' }
-    ]
-};
-
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
         '<tr class="album-view-song-item">'
-      + '  <td class="song-item-number">' + songNumber + '</td>'
+      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
       + '  <td class="song-item-duration">' + songLength + '</td>'
       + '</tr>'
@@ -55,13 +41,13 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
-var albumTitle = document.getElementsByClassName('album-view-title')[0];
-var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-var albumImage = document.getElementsByClassName('album-cover-art')[0];
-var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
-
 var setCurrentAlbum = function(album) {
+    var albumTitle = document.getElementsByClassName('album-view-title')[0];
+    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+    var albumImage = document.getElementsByClassName('album-cover-art')[0];
+    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
     albumTitle.firstChild.nodeValue = album.name;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -74,17 +60,23 @@ var setCurrentAlbum = function(album) {
     }
 };
 
-var albumList = [albumPicasso, albumMarconi, albumJohn];
-var albumIndex = 0;
+var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
+var songRows = document.getElementsByClassName('album-view-song-item');
+
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
-    document.getElementsByClassName('album-cover-art')[0].addEventListener("click", function() {
-				albumIndex++;
-				if (albumIndex >= albumList.length) {
-            albumIndex = 0;
-        };
-				setCurrentAlbum(albumList[albumIndex]);
+    songListContainer.addEventListener('mouseover', function(event) {
+        if (event.target.parentElement.className === 'album-view-song-item') {
+            event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+        }
     });
+
+    for (i = 0; i < songRows.length; i++) {
+        songRows[i].addEventListener('mouseleave', function(event) {
+            this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+        });
+    }
 };
