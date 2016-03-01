@@ -1,5 +1,3 @@
-
-
 var albumPicasso = {
 	name: 'The Colors',
 	artist: 'Pablo Picasso',
@@ -29,6 +27,21 @@ var albumMarconi = {
 		{ name: 'Wrong phone number', length: '2:15' }
 	]
 };
+
+// var albumJohn = {
+// 	name: 'Born and Raised',
+// 	artist: 'John Mayer',
+// 	label: 'Columbia',
+// 	year: '2012',
+// 	albumArtUrl: 'assets/images/album_covers/16.png',
+// 	songs: [
+// 		{ name: 'Queen of Califorina', length: '4:08' },
+// 		{ name: 'The Age of Worry', length: '2:39' },
+// 		{ name: 'Shadow Days', length: '3:50' },
+// 		{ name: 'Speak For Me', length: '3:45' },
+// 		{ name: 'Something Like Oliva', length: '3:01' }
+// 	]
+// };
 
 var createSongRow = function(songNumber, songName, songLength) {
 	var template =
@@ -74,16 +87,16 @@ var getSongItem = function(element) {
 		case 'album-song-button':
 		case 'ion-play':
 		case 'ion-pause':
-			return findParentByClassName(element, 'song-item-number');
+		return findParentByClassName(element, 'song-item-number');
 		case 'album-view-song-item':
-			return element.querySelector('.song-item-number');
+		return element.querySelector('.song-item-number');
 		case 'song-item-title':
 		case 'song-item-duration':
-			return findParentByClassName(element, 'album-view-song-item').querySelector('.song-item-number');
+		return findParentByClassName(element, 'album-view-song-item').querySelector('.song-item-number');
 		case 'song-item-number':
-			return element;
+		return element;
 		default:
-			return;
+		return;
 	}
 };
 
@@ -112,8 +125,19 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
 
 var currentlyPlayingSong = null;
 
+// var albumList = [albumPicasso, albumMarconi, albumJohn];
+// var albumIndex = 0;
+
 window.onload = function() {
 	setCurrentAlbum(albumPicasso);
+
+	// document.getElementsByClassName('album-cover-art')[0].addEventListener("click", function() {
+	// 	albumIndex++;
+	// 	if (albumIndex >= albumList.length) {
+	// 		albumIndex = 0;
+	// 	};
+	// 	setCurrentAlbum(albumList[albumIndex]);
+	// });
 
 	songListContainer.addEventListener('mouseover', function(event) {
 		if (event.target.parentElement.className === 'album-view-song-item') {
